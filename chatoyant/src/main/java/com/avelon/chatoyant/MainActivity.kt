@@ -31,5 +31,10 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // DAJO
+        supportActionBar?.hide()
+
+
     }
 }

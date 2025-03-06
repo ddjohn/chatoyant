@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.avelon.chatoyant.ui.notifications.NotificationsFragment"
+        android:name="com.avelon.chatoyant.ui.exoplayer.ExoplayerFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_exoplayer" />
 </navigation>
