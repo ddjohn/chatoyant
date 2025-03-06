@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "chatoyant"
-include(":app")
+include(":chatoyant")
