@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_mapbox"
         android:name="com.avelon.chatoyant.ui.mapbox.MapboxFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="@string/title_mapbox"
+        tools:layout="@layout/fragment_mapbox" />
 
     <fragment
         android:id="@+id/navigation_notifications"
