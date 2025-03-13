@@ -45,8 +45,7 @@ android {
 }
 
 dependencies {
-    // DAJO
-    
+
     // Exo Player
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.exoplayer.dash)
@@ -63,6 +62,12 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.tooling.preview)
     debugImplementation(libs.androidx.ui.tooling)
+
+    // QR Code
+    implementation("com.journeyapps:zxing-android-embedded:4.1.0")
+
+    // Gauges
+    //implementation("pl.pawelkleczkowski.customgauge:CustomGauge:1.0.4")
 
     // Template
     implementation(libs.androidx.core.ktx)

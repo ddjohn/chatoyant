@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.media3.common.MediaItem
+import androidx.media3.common.Player
+import androidx.media3.common.Player.Listener
 import androidx.media3.exoplayer.ExoPlayer
 import com.avelon.chatoyant.databinding.FragmentExoplayerBinding
 
@@ -30,6 +32,10 @@ class ExoplayerFragment : Fragment() {
 
         // DAJO
         val player = ExoPlayer.Builder(requireContext()).build()
+        /*player.addListener(Listener() {
+
+        })*/
+
         playerView.player = player
 
         val videoUri = Uri.parse("https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4");

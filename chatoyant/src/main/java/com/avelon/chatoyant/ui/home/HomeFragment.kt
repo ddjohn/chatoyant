@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.avelon.chatoyant.databinding.FragmentHomeBinding
+import com.google.zxing.BarcodeFormat
 
 class HomeFragment : Fragment() {
 
@@ -22,16 +21,18 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        //DAJO
+        val barcodeEncoder = com.journeyapps.barcodescanner.BarcodeEncoder()
+        val bitMatrix = barcodeEncoder.encode("Hello World", BarcodeFormat.QR_CODE, 400, 400)
+        val bitmap = barcodeEncoder.createBitmap(bitMatrix)
+
+        val imageView = binding.imageView;
+        imageView.setImageBitmap(bitmap)
+
         return root
     }
 

@@ -10,8 +10,16 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import com.avelon.chatoyant.databinding.FragmentMapboxBinding
 import com.mapbox.geojson.Point
+import com.mapbox.maps.Style
+import com.mapbox.maps.extension.compose.MapEffect
 import com.mapbox.maps.extension.compose.MapboxMap
 import com.mapbox.maps.extension.compose.animation.viewport.rememberMapViewportState
+import com.mapbox.maps.extension.compose.style.standard.LightPresetValue
+import com.mapbox.maps.extension.compose.style.standard.MapboxStandardStyle
+import com.mapbox.maps.plugin.PuckBearing
+import com.mapbox.maps.plugin.locationcomponent.createDefault2DPuck
+import com.mapbox.maps.plugin.locationcomponent.location
+import com.mapbox.maps.plugin.viewport.viewport
 
 class MapboxFragment : Fragment() {
 
@@ -39,13 +47,71 @@ class MapboxFragment : Fragment() {
                     mapViewportState = rememberMapViewportState {
                         setCameraOptions {
                             zoom(16.0)
-                            center(Point.fromLngLat(-98.0, 39.5))
+                            center(Point.fromLngLat(11.997013996301572, 57.68784852211992))
                             pitch(60.0)
                             bearing(120.0)
 
                         }
+                        /*flyTo(cameraOptions =  cameraOptions {
+                      zoom(16.0)
+                      center(Point.fromLngLat(10.997013996301572, 57.68784852211992))
+                      //center(Point.fromLngLat(-98.0, 39.5))
+                      pitch(60.0)
+                      bearing(0.0)
+                      mapAnimationOptions { duration(12_000) }
+                  }) {
+                      isFinished -> Log.e("TAG", "finished");
+                  }*/
                     },
-                )
+                    style = {
+                        //MapboxStandardSatelliteStyle()
+                        MapboxStandardStyle {
+                            lightPreset = LightPresetValue.DUSK
+                            lightPreset = LightPresetValue.NIGHT
+                        }
+                    }
+                ) {
+                    // Get reference to the raw MapView using MapEffect
+                        MapEffect(Unit) { mapView ->
+
+                            mapView.mapboxMap.loadStyle(Style.STANDARD)
+                            mapView.mapboxMap.loadStyle(Style.STANDARD_SATELLITE)
+                            mapView.mapboxMap.loadStyle(Style.MAPBOX_STREETS)
+
+                            mapView.debugOptions = setOf(
+                                //MapViewDebugOptions.TILE_BORDERS,
+                                //MapViewDebugOptions.PARSE_STATUS,
+                                //MapViewDebugOptions.TIMESTAMPS,
+                                //MapViewDebugOptions.COLLISION,
+                                //MapViewDebugOptions.STENCIL_CLIP,
+                                //MapViewDebugOptions.DEPTH_BUFFER,
+                                //MapViewDebugOptions.MODEL_BOUNDS,
+                                //MapViewDebugOptions.TERRAIN_WIREFRAME,
+                                //MapViewDebugOptions.CAMERA,
+                            )
+
+                            with(mapView) {
+                                location.locationPuck = createDefault2DPuck(withBearing = true)
+                                location.enabled = true
+                                location.puckBearing = PuckBearing.COURSE
+                                location.puckBearingEnabled = true
+                                location.pulsingEnabled = true
+                                viewport.transitionTo(
+                                    targetState = viewport.makeFollowPuckViewportState(),
+                                    transition = viewport.makeImmediateViewportTransition()
+                                )
+                            }
+
+                            /*
+                            val annotationApi = mapView?.annotations
+                            val pointAnnotationManager = annotationApi?.createPointAnnotationManager(mapView)
+                            val pointAnnotationOptions: PointAnnotationOptions = PointAnnotationOptions()
+                                .withPoint(Point.fromLngLat(18.06, 59.31))
+                            //.withIconImage(YOUR_ICON_BITMAP)
+                            pointAnnotationManager?.create(pointAnnotationOptions)
+                            */
+                        }
+                }
             }
         }
 
