@@ -2,17 +2,25 @@ package com.avelon.chatoyant.ui.exoplayer
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.media3.common.DeviceInfo
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
+import androidx.media3.common.Metadata
+import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
-import androidx.media3.common.Player.Listener
+import androidx.media3.common.Tracks
+import androidx.media3.common.VideoSize
 import androidx.media3.exoplayer.ExoPlayer
 import com.avelon.chatoyant.databinding.FragmentExoplayerBinding
+import com.avelon.chatoyant.logging.DLog
 
 class ExoplayerFragment : Fragment() {
+    val TAG: String = DLog.forTag(ExoplayerFragment::class.java)
 
     private var _binding: FragmentExoplayerBinding? = null
 
@@ -32,9 +40,7 @@ class ExoplayerFragment : Fragment() {
 
         // DAJO
         val player = ExoPlayer.Builder(requireContext()).build()
-        /*player.addListener(Listener() {
-
-        })*/
+        player.addListener(Listener())
 
         playerView.player = player
 
