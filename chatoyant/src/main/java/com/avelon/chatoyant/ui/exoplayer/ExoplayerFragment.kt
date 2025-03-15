@@ -7,15 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.media3.common.DeviceInfo
 import androidx.media3.common.MediaItem
-import androidx.media3.common.MediaMetadata
-import androidx.media3.common.Metadata
-import androidx.media3.common.PlaybackException
-import androidx.media3.common.Player
-import androidx.media3.common.Tracks
-import androidx.media3.common.VideoSize
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.analytics.AnalyticsListener
 import com.avelon.chatoyant.databinding.FragmentExoplayerBinding
 import com.avelon.chatoyant.logging.DLog
 
@@ -40,7 +34,24 @@ class ExoplayerFragment : Fragment() {
 
         // DAJO
         val player = ExoPlayer.Builder(requireContext()).build()
-        player.addListener(Listener())
+        player.addListener(object: MapboxPlayerListener() {
+            override fun onIsPlayingChanged(isPlaying: Boolean) {
+                Log.e(TAG,"onIsPlayingChanged(): ${isPlaying}")
+                if (isPlaying) {
+                    playerView.postDelayed(this::getCurrentPlayerPosition, 100)
+                }
+            }
+
+            private fun getCurrentPlayerPosition() {
+                Log.d(TAG, "current pos: " + player.currentPosition)
+                if (player.isPlaying) {
+                    playerView.postDelayed(this::getCurrentPlayerPosition, 100)
+                }
+            }
+        })
+        player.addAnalyticsListener(object: AnalyticsListener {
+
+        })
 
         playerView.player = player
 
@@ -57,4 +68,6 @@ class ExoplayerFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

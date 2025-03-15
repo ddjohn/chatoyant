@@ -1,5 +1,9 @@
 package com.avelon.chatoyant.ui.mapbox
 
+import android.Manifest
+import android.content.Context
+import android.location.Criteria
+import android.location.LocationManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import com.avelon.chatoyant.databinding.FragmentMapboxBinding
+import com.avelon.chatoyant.logging.DLog
 import com.mapbox.geojson.Point
 import com.mapbox.maps.Style
 import com.mapbox.maps.extension.compose.MapEffect
@@ -22,6 +27,7 @@ import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.maps.plugin.viewport.viewport
 
 class MapboxFragment : Fragment() {
+    private val TAG = DLog.forTag(MapboxFragment::class.java)
 
     private var _binding: FragmentMapboxBinding? = null
 
@@ -115,6 +121,14 @@ class MapboxFragment : Fragment() {
             }
         }
 
+        context?.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+        context?.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+
+        val locationManager = context?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val provider = locationManager.getBestProvider(Criteria(), true)
+        DLog.i(TAG, "provider=${provider}")
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 0f, MapboxLocationListener())
+
         return root
     }
 
@@ -122,4 +136,6 @@ class MapboxFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

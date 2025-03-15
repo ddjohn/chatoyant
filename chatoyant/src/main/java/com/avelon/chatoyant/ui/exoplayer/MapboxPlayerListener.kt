@@ -9,8 +9,8 @@ import androidx.media3.common.Tracks
 import androidx.media3.common.VideoSize
 import com.avelon.chatoyant.logging.DLog
 
-class Listener: Player.Listener {
-    val TAG =DLog.forTag(Listener::class.java)
+open class MapboxPlayerListener: Player.Listener {
+    val TAG =DLog.forTag(MapboxPlayerListener::class.java)
 
     override fun onEvents(player: Player, events: Player.Events) {
         super.onEvents(player, events)
@@ -88,4 +88,6 @@ class Listener: Player.Listener {
         Log.i(TAG, "onVideoSizeChanged(): ${videoSize.width}x${videoSize.height}x${videoSize.pixelWidthHeightRatio}")
         super.onVideoSizeChanged(videoSize)
     }
+
+
 }
