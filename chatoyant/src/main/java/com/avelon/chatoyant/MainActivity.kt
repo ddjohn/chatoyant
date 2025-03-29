@@ -1,15 +1,21 @@
 package com.avelon.chatoyant
 
+import android.content.Context
 import android.os.Bundle
+import android.os.DropBoxManager
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.avelon.chatoyant.databinding.ActivityMainBinding
+import com.avelon.chatoyant.logging.DLog
 
 class MainActivity : AppCompatActivity() {
+    private val TAG = DLog.forTag(MainActivity::class.java)
 
     private lateinit var binding: ActivityMainBinding
 
@@ -31,6 +37,11 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener(NavController.OnDestinationChangedListener {controller, destination, arguments ->
+            DLog.d(TAG, "onDestinationChanged(): ${destination.label}")
+            val dropboxManager = getSystemService(Context.DROPBOX_SERVICE) as DropBoxManager
+            dropboxManager.addText("fragment", "${destination.label}")
+        });
 
         // DAJO
         supportActionBar?.hide()

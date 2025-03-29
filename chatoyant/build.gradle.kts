@@ -4,8 +4,15 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("../etc/keystore.jks")
+            storePassword = "android"
+            keyAlias = "platform"
+            keyPassword = "android"
+        }
+    }
     namespace = "com.avelon.chatoyant"
     compileSdk = 35
 
@@ -15,7 +22,7 @@ android {
 
     defaultConfig {
         applicationId = "com.avelon.chatoyant"
-        minSdk = 34
+        minSdk = 33
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
