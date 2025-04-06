@@ -11,7 +11,7 @@ import android.view.SurfaceHolder
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.avelon.chatoyant.databinding.FragmentHomeBinding
+import com.avelon.chatoyant.databinding.FragmentDisplaysBinding
 import com.avelon.chatoyant.logging.DLog
 import com.google.zxing.BarcodeFormat
 import java.io.BufferedWriter
@@ -20,15 +20,13 @@ import java.net.ServerSocket
 import java.net.Socket
 import android.graphics.Paint
 import android.graphics.PixelFormat
-import com.avelon.chatoyant.ui.home.WebClient
-import com.avelon.chatoyant.ui.home.WebServer
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import kotlin.concurrent.thread
 
 class DisplaysFragment : Fragment(), SurfaceHolder.Callback {
     private val TAG = DLog.forTag(DisplaysFragment::class.java)
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentDisplaysBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -40,7 +38,7 @@ class DisplaysFragment : Fragment(), SurfaceHolder.Callback {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentDisplaysBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val surfaceView = binding.surfaceView
