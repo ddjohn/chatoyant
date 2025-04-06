@@ -4,4 +4,5 @@
     <string name="title_mapbox">Mapbox</string>
     <string name="title_exoplayer">ExoPlayer</string>
     <string name="title_dropbox">Dropbox</string>
+    <string name="title_displays">Displays</string>
 </resources>

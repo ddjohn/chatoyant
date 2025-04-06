@@ -17,6 +17,12 @@ import com.avelon.chatoyant.logging.DLog
 class MainActivity : AppCompatActivity() {
     private val TAG = DLog.forTag(MainActivity::class.java)
 
+    private val REQUEST_CODE = 666
+    private val REQUEST_PERMISSIONS = arrayOf(
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA",
+    )
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,10 +52,10 @@ class MainActivity : AppCompatActivity() {
         // DAJO
         supportActionBar?.hide()
 
-        requestPermissions(arrayOf(
-            "android.permission.ACCESS_COARSE_LOCATION",
-            "android.permission.ACCESS_FINE_LOCATION"
-        ), 666)
+        requestPermissions(REQUEST_PERMISSIONS, REQUEST_CODE)
 
+        for(permission in REQUEST_PERMISSIONS) {
+            checkSelfPermission(permission)
+        }
     }
 }

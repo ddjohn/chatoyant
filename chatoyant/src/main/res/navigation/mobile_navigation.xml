@@ -29,4 +29,9 @@
         android:label="@string/title_dropbox"
         tools:layout="@layout/fragment_dropbox" />
 
+    <fragment
+        android:id="@+id/navigation_displays"
+        android:name="com.avelon.chatoyant.ui.displays.DisplaysFragment"
+        android:label="@string/title_displays"
+        tools:layout="@layout/fragment_displays" />
 </navigation>
