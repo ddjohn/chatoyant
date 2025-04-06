@@ -20,8 +20,6 @@ import java.net.ServerSocket
 import java.net.Socket
 import android.graphics.Paint
 import android.graphics.PixelFormat
-import com.avelon.chatoyant.ui.home.WebClient
-import com.avelon.chatoyant.ui.home.WebServer
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import kotlin.concurrent.thread
 
