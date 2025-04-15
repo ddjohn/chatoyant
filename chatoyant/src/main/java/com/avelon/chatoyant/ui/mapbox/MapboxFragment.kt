@@ -39,6 +39,7 @@ class MapboxFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+        DLog.d(TAG, "onCreateView()")
         _binding = FragmentMapboxBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -133,6 +134,7 @@ class MapboxFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        DLog.d(TAG, "onDestroyView()")
         super.onDestroyView()
         _binding = null
     }

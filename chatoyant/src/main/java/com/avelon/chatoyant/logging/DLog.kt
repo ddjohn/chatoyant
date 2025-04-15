@@ -17,14 +17,14 @@ class DLog {
             tag: String,
             message: String,
         ) {
-            Log.e(tag, message)
+            Log.i(tag, message)
         }
 
         fun d(
             tag: String,
             message: String,
         ) {
-            Log.e(tag, message)
+            Log.d(tag, message)
         }
 
         fun e(
