@@ -11,20 +11,14 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.avelon.chatoyant.databinding.ActivityMainBinding
 import com.avelon.chatoyant.logging.DLog
+import com.avelon.chatoyant.notifications.Notif
+import com.avelon.chatoyant.permissions.Permissions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dalvik.system.DexClassLoader
 
 class MainActivity : AppCompatActivity() {
     companion object {
         private val TAG = DLog.forTag(MainActivity::class.java)
-        private val REQUEST_CODE = 666
-        private val REQUEST_PERMISSIONS =
-            arrayOf(
-                "android.permission.ACCESS_COARSE_LOCATION",
-                "android.permission.ACCESS_FINE_LOCATION",
-                "android.permission.CAMERA",
-                "android.permission.RECORD_AUDIO",
-            )
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -70,16 +64,17 @@ class MainActivity : AppCompatActivity() {
             DLog.e(TAG, "resource=$resource")
         }
 
+        val notif = Notif(this)
+        notif.default(667, "title2", "content2")
+
         // val field = s.javaClass.getDeclaredField("classes") as Field
         // field.isAccessible = true
 
         // val classes =  field.get(classLoader)
         // DLog.e(TAG, "classess=${classes}")
 
-        requestPermissions(REQUEST_PERMISSIONS, REQUEST_CODE)
-
-        for (permission in REQUEST_PERMISSIONS) {
-            checkSelfPermission(permission)
-        }
+        val permissions = Permissions(this)
+        permissions.requestPermissions()
+        permissions.checkSelfPermssions()
     }
 }
