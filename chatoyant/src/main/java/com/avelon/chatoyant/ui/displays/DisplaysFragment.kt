@@ -1,42 +1,36 @@
 package com.avelon.chatoyant.ui.displays
 
+import android.car.Car
+import android.car.CarOccupantZoneManager
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Paint
 import android.hardware.display.DisplayManager
-import android.hardware.display.VirtualDisplay
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Surface
 import android.view.SurfaceHolder
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.avelon.chatoyant.databinding.FragmentDisplaysBinding
 import com.avelon.chatoyant.logging.DLog
-import com.google.zxing.BarcodeFormat
-import java.io.BufferedWriter
-import java.net.InetAddress
-import java.net.ServerSocket
-import java.net.Socket
-import android.graphics.Paint
-import android.graphics.PixelFormat
-import com.journeyapps.barcodescanner.BarcodeEncoder
-import kotlin.concurrent.thread
 
-class DisplaysFragment : Fragment(), SurfaceHolder.Callback {
-    private val TAG = DLog.forTag(DisplaysFragment::class.java)
+class DisplaysFragment :
+    Fragment(),
+    SurfaceHolder.Callback {
+    companion object {
+        private val TAG = DLog.forTag(DisplaysFragment::class.java)
+    }
 
     private var _binding: FragmentDisplaysBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
+        DLog.d(TAG, "onCreateView")
 
         _binding = FragmentDisplaysBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -46,25 +40,42 @@ class DisplaysFragment : Fragment(), SurfaceHolder.Callback {
         val surface = surfaceHolder.surface
 
         surfaceView.setZOrderOnTop(true)
-        //surfaceView.holder.setFormat(PixelFormat.TRANSPARENT);
+        // surfaceView.holder.setFormat(PixelFormat.TRANSPARENT);
 
         surfaceView.holder.addCallback(this)
 
         val displayManager = context?.getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
 
-        val vDisplay = displayManager.createVirtualDisplay("test", 600, 400, 121, surface,
-            DisplayManager.VIRTUAL_DISPLAY_FLAG_PUBLIC or
-            DisplayManager.VIRTUAL_DISPLAY_FLAG_SECURE or
-            DisplayManager.VIRTUAL_DISPLAY_FLAG_OWN_CONTENT_ONLY or
-            DisplayManager.VIRTUAL_DISPLAY_FLAG_PRESENTATION
-            //DisplayManager.VIRTUAL_DISPLAY_FLAG_ROTATES_WITH_CONTENT or
-            //DisplayManager.VIRTUAL_DISPLAY_FLAG_TRUSTED or
-            //DisplayManager.VIRTUAL_DISPLAY_FLAG_SUPPORTS_TOUCH
-            /*DisplayManager. VIRTUAL_DISPLAY_FLAG_OWN_FOCUS 1 shl 14*/
-        )
+        val vDisplay =
+            displayManager.createVirtualDisplay(
+                "test",
+                600,
+                400,
+                121,
+                surface,
+                DisplayManager.VIRTUAL_DISPLAY_FLAG_PUBLIC or
+                    DisplayManager.VIRTUAL_DISPLAY_FLAG_SECURE or
+                    DisplayManager.VIRTUAL_DISPLAY_FLAG_OWN_CONTENT_ONLY or
+                    DisplayManager.VIRTUAL_DISPLAY_FLAG_PRESENTATION,
+                // DisplayManager.VIRTUAL_DISPLAY_FLAG_ROTATES_WITH_CONTENT or
+                // DisplayManager.VIRTUAL_DISPLAY_FLAG_TRUSTED or
+                // DisplayManager.VIRTUAL_DISPLAY_FLAG_SUPPORTS_TOUCH
+                // DisplayManager. VIRTUAL_DISPLAY_FLAG_OWN_FOCUS 1 shl 14
+            )
 
-        for(display in displayManager.displays) {
-            DLog.i(TAG, "display=${display}")
+        val car = Car.createCar(context)
+        val zoneMgr = car?.getCarManager(Car.CAR_OCCUPANT_ZONE_SERVICE) as CarOccupantZoneManager
+        // val connMgr = car.getCarManager(Car.CAR_OCCUPANT_CONNECTION_SERVICE) as CarOccupantConnectionManager
+        // val occupancyMgr = car.getCarManager(Car.OCCUPANT_AWARENESS_SERVICE) as OccupantAwarenessManager
+
+        for (zone in zoneMgr.allOccupantZones) {
+            DLog.i(TAG, "zone=zone}")
+        }
+
+        // occupancyMgr.registerChangeCallback(OccupancyAwa)
+
+        for (display in displayManager.displays) {
+            DLog.i(TAG, "display=$display")
         }
 
         return root
@@ -92,7 +103,12 @@ class DisplaysFragment : Fragment(), SurfaceHolder.Callback {
         holder.unlockCanvasAndPost(canvas)
     }
 
-    override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {}
+    override fun surfaceChanged(
+        holder: SurfaceHolder,
+        format: Int,
+        width: Int,
+        height: Int,
+    ) {}
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {}
 }
