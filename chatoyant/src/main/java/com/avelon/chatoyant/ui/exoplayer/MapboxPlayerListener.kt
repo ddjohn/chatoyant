@@ -9,19 +9,25 @@ import androidx.media3.common.Tracks
 import androidx.media3.common.VideoSize
 import com.avelon.chatoyant.logging.DLog
 
-open class MapboxPlayerListener: Player.Listener {
-    val TAG =DLog.forTag(MapboxPlayerListener::class.java)
+open class MapboxPlayerListener : Player.Listener {
+    companion object {
+        private val TAG = DLog.forTag(MapboxPlayerListener::class.java)
+    }
 
-    override fun onEvents(player: Player, events: Player.Events) {
+    override fun onEvents(
+        player: Player,
+        events: Player.Events,
+    ) {
+        DLog.d(TAG, "onEvents()")
         super.onEvents(player, events)
 
-        for(i in 0 until events.size()) {
+        for (i in 0 until events.size()) {
             val event = events.get(i)
-            when(event) {
+            when (event) {
                 // 0
                 Player.EVENT_TIMELINE_CHANGED -> Log.i(TAG, "EVENT_TIMELINE_CHANGED")
                 // 1
-                Player.EVENT_MEDIA_ITEM_TRANSITION ->  Log.i(TAG, "EVENT_MEDIA_ITEM_TRANSITION")
+                Player.EVENT_MEDIA_ITEM_TRANSITION -> Log.i(TAG, "EVENT_MEDIA_ITEM_TRANSITION")
                 // 2
                 Player.EVENT_TRACKS_CHANGED -> Log.i(TAG, "EVENT_TRACKS_CHANGED")
                 // 3
@@ -33,18 +39,17 @@ open class MapboxPlayerListener: Player.Listener {
                 // 13
                 Player.EVENT_AVAILABLE_COMMANDS_CHANGED -> Log.i(TAG, "EVENT_AVAILABLE_COMMANDS_CHANGED")
 
-
                 Player.EVENT_IS_PLAYING_CHANGED -> Log.i(TAG, "EVENT_IS_PLAYING_CHANGED")
                 Player.EVENT_PLAYBACK_SUPPRESSION_REASON_CHANGED -> Log.i(TAG, "EVENT_PLAYBACK_SUPPRESSION_REASON_CHANGED")
                 Player.EVENT_SURFACE_SIZE_CHANGED -> Log.i(TAG, "EVENT_SURFACE_SIZE_CHANGED")
                 Player.EVENT_VIDEO_SIZE_CHANGED -> Log.i(TAG, "EVENT_VIDEO_SIZE_CHANGED")
                 Player.EVENT_RENDERED_FIRST_FRAME -> Log.i(TAG, "EVENT_RENDERED_FIRST_FRAME")
 
-                else -> Log.i(TAG, "Unknown event ${event}")
+                else -> Log.i(TAG, "Unknown event $event")
             }
         }
 
-        //Log.e(TAG, "" + player.get
+        // Log.e(TAG, "" + player.get
     }
 
     override fun onDeviceInfoChanged(deviceInfo: DeviceInfo) {
@@ -76,11 +81,11 @@ open class MapboxPlayerListener: Player.Listener {
     }
 
     override fun onPlayerError(error: PlaybackException) {
-        DLog.e(TAG, "error= ${error}")
+        DLog.e(TAG, "error= $error")
     }
 
     override fun onTracksChanged(tracks: Tracks) {
-        Log.i(TAG, "onTracksChanged(): ${tracks}")
+        Log.i(TAG, "onTracksChanged(): $tracks")
         super.onTracksChanged(tracks)
     }
 
@@ -88,6 +93,4 @@ open class MapboxPlayerListener: Player.Listener {
         Log.i(TAG, "onVideoSizeChanged(): ${videoSize.width}x${videoSize.height}x${videoSize.pixelWidthHeightRatio}")
         super.onVideoSizeChanged(videoSize)
     }
-
-
 }

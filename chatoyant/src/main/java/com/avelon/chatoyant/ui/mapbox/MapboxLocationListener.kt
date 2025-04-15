@@ -4,8 +4,10 @@ import android.location.Location
 import android.location.LocationListener
 import com.avelon.chatoyant.logging.DLog
 
-class MapboxLocationListener: LocationListener {
-    private val TAG = DLog.forTag(LocationListener::class.java)
+class MapboxLocationListener : LocationListener {
+    companion object {
+        private val TAG = DLog.forTag(LocationListener::class.java)
+    }
 
     override fun onLocationChanged(location: Location) {
         DLog.d(TAG, "onLocationChanged(): ${location.latitude}:${location.longitude} ${location.bearing}")

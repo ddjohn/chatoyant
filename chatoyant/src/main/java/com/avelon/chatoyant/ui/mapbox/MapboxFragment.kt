@@ -27,37 +27,36 @@ import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.maps.plugin.viewport.viewport
 
 class MapboxFragment : Fragment() {
-    private val TAG = DLog.forTag(MapboxFragment::class.java)
+    companion object {
+        private val TAG = DLog.forTag(MapboxFragment::class.java)
+    }
 
     private var _binding: FragmentMapboxBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentMapboxBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         // DAJO
-        val mapboxView = binding.composeView;
+        val mapboxView = binding.composeView
         mapboxView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MapboxMap(
                     modifier = Modifier.fillMaxSize(),
-                    mapViewportState = rememberMapViewportState {
-                        setCameraOptions {
-                            zoom(16.0)
-                            center(Point.fromLngLat(11.997013996301572, 57.68784852211992))
-                            pitch(60.0)
-                            bearing(120.0)
-
-                        }
+                    mapViewportState =
+                        rememberMapViewportState {
+                            setCameraOptions {
+                                zoom(16.0)
+                                center(Point.fromLngLat(11.997013996301572, 57.68784852211992))
+                                pitch(60.0)
+                                bearing(120.0)
+                            }
                         /*flyTo(cameraOptions =  cameraOptions {
                       zoom(16.0)
                       center(Point.fromLngLat(10.997013996301572, 57.68784852211992))
@@ -68,45 +67,46 @@ class MapboxFragment : Fragment() {
                   }) {
                       isFinished -> Log.e("TAG", "finished");
                   }*/
-                    },
+                        },
                     style = {
-                        //MapboxStandardSatelliteStyle()
+                        // MapboxStandardSatelliteStyle()
                         MapboxStandardStyle {
                             lightPreset = LightPresetValue.DUSK
                             lightPreset = LightPresetValue.NIGHT
                         }
-                    }
+                    },
                 ) {
                     // Get reference to the raw MapView using MapEffect
-                        MapEffect(Unit) { mapView ->
+                    MapEffect(Unit) { mapView ->
 
-                            mapView.mapboxMap.loadStyle(Style.STANDARD)
-                            mapView.mapboxMap.loadStyle(Style.STANDARD_SATELLITE)
-                            mapView.mapboxMap.loadStyle(Style.MAPBOX_STREETS)
+                        mapView.mapboxMap.loadStyle(Style.STANDARD)
+                        mapView.mapboxMap.loadStyle(Style.STANDARD_SATELLITE)
+                        mapView.mapboxMap.loadStyle(Style.MAPBOX_STREETS)
 
-                            mapView.debugOptions = setOf(
-                                //MapViewDebugOptions.TILE_BORDERS,
-                                //MapViewDebugOptions.PARSE_STATUS,
-                                //MapViewDebugOptions.TIMESTAMPS,
-                                //MapViewDebugOptions.COLLISION,
-                                //MapViewDebugOptions.STENCIL_CLIP,
-                                //MapViewDebugOptions.DEPTH_BUFFER,
-                                //MapViewDebugOptions.MODEL_BOUNDS,
-                                //MapViewDebugOptions.TERRAIN_WIREFRAME,
-                                //MapViewDebugOptions.CAMERA,
+                        mapView.debugOptions =
+                            setOf(
+                                // MapViewDebugOptions.TILE_BORDERS,
+                                // MapViewDebugOptions.PARSE_STATUS,
+                                // MapViewDebugOptions.TIMESTAMPS,
+                                // MapViewDebugOptions.COLLISION,
+                                // MapViewDebugOptions.STENCIL_CLIP,
+                                // MapViewDebugOptions.DEPTH_BUFFER,
+                                // MapViewDebugOptions.MODEL_BOUNDS,
+                                // MapViewDebugOptions.TERRAIN_WIREFRAME,
+                                // MapViewDebugOptions.CAMERA,
                             )
 
-                            with(mapView) {
-                                location.locationPuck = createDefault2DPuck(withBearing = true)
-                                location.enabled = true
-                                location.puckBearing = PuckBearing.COURSE
-                                location.puckBearingEnabled = true
-                                location.pulsingEnabled = true
-                                viewport.transitionTo(
-                                    targetState = viewport.makeFollowPuckViewportState(),
-                                    transition = viewport.makeImmediateViewportTransition()
-                                )
-                            }
+                        with(mapView) {
+                            location.locationPuck = createDefault2DPuck(withBearing = true)
+                            location.enabled = true
+                            location.puckBearing = PuckBearing.COURSE
+                            location.puckBearingEnabled = true
+                            location.pulsingEnabled = true
+                            viewport.transitionTo(
+                                targetState = viewport.makeFollowPuckViewportState(),
+                                transition = viewport.makeImmediateViewportTransition(),
+                            )
+                        }
 
                             /*
                             val annotationApi = mapView?.annotations
@@ -115,8 +115,8 @@ class MapboxFragment : Fragment() {
                                 .withPoint(Point.fromLngLat(18.06, 59.31))
                             //.withIconImage(YOUR_ICON_BITMAP)
                             pointAnnotationManager?.create(pointAnnotationOptions)
-                            */
-                        }
+                             */
+                    }
                 }
             }
         }
@@ -126,7 +126,7 @@ class MapboxFragment : Fragment() {
 
         val locationManager = context?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         val provider = locationManager.getBestProvider(Criteria(), true)
-        DLog.i(TAG, "provider=${provider}")
+        DLog.i(TAG, "provider=$provider")
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0L, 0f, MapboxLocationListener())
 
         return root
@@ -136,6 +136,4 @@ class MapboxFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

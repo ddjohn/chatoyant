@@ -4,20 +4,35 @@ import android.util.Log
 
 class DLog {
     companion object {
-        fun forTag(clazz: Class<*>): String {
-            return "@CHAT." + clazz.simpleName;
-        }
+        fun forTag(clazz: Class<*>): String = "@CHAT." + clazz.simpleName
 
-        fun e(tag: String, message: String) {
+        fun e(
+            tag: String,
+            message: String,
+        ) {
             Log.e(tag, message)
         }
 
-        fun i(tag: String, message: String) {
+        fun i(
+            tag: String,
+            message: String,
+        ) {
             Log.e(tag, message)
         }
 
-        fun d(tag: String, message: String) {
+        fun d(
+            tag: String,
+            message: String,
+        ) {
             Log.e(tag, message)
+        }
+
+        fun e(
+            tag: String,
+            message: String,
+            e: Exception,
+        ) {
+            Log.e(tag, message, e)
         }
     }
 }

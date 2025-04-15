@@ -15,18 +15,17 @@ import com.avelon.chatoyant.databinding.FragmentExoplayerBinding
 import com.avelon.chatoyant.logging.DLog
 
 class ExoplayerFragment : Fragment() {
-    val TAG: String = DLog.forTag(ExoplayerFragment::class.java)
+    companion object {
+        private val TAG = DLog.forTag(ExoplayerFragment::class.java)
+    }
 
     private var _binding: FragmentExoplayerBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentExoplayerBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -35,28 +34,31 @@ class ExoplayerFragment : Fragment() {
 
         // DAJO
         val player = ExoPlayer.Builder(requireContext()).build()
-        player.addListener(object: MapboxPlayerListener() {
-            override fun onIsPlayingChanged(isPlaying: Boolean) {
-                Log.e(TAG,"onIsPlayingChanged(): ${isPlaying}")
-                if (isPlaying) {
-                    playerView.postDelayed(this::getCurrentPlayerPosition, 100)
+        player.addListener(
+            object : MapboxPlayerListener() {
+                override fun onIsPlayingChanged(isPlaying: Boolean) {
+                    Log.e(TAG, "onIsPlayingChanged(): $isPlaying")
+                    if (isPlaying) {
+                        playerView.postDelayed(this::getCurrentPlayerPosition, 100)
+                    }
                 }
-            }
 
-            private fun getCurrentPlayerPosition() {
-                Log.d(TAG, "current pos: " + player.currentPosition)
-                if (player.isPlaying) {
-                    playerView.postDelayed(this::getCurrentPlayerPosition, 100)
+                private fun getCurrentPlayerPosition() {
+                    Log.d(TAG, "current pos: " + player.currentPosition)
+                    if (player.isPlaying) {
+                        playerView.postDelayed(this::getCurrentPlayerPosition, 100)
+                    }
                 }
-            }
-        })
-        player.addAnalyticsListener(object: AnalyticsListener {
-
-        })
+            },
+        )
+        player.addAnalyticsListener(
+            object : AnalyticsListener {
+            },
+        )
 
         playerView.player = player
 
-        val videoUri = Uri.parse("https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4");
+        val videoUri = Uri.parse("https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4")
         val mediaItem = MediaItem.fromUri(videoUri)
         player.setMediaItem(mediaItem)
         player.prepare()
@@ -69,6 +71,4 @@ class ExoplayerFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

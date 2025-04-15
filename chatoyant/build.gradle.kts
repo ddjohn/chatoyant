@@ -35,16 +35,16 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding = true
@@ -52,6 +52,7 @@ android {
 }
 
 dependencies {
+    implementation(fileTree(mapOf("dir" to "../libs", "include" to listOf("*.jar"))))
 
     // Exo Player
     implementation(libs.androidx.media3.exoplayer)
@@ -74,7 +75,7 @@ dependencies {
     implementation("com.journeyapps:zxing-android-embedded:4.1.0")
 
     // Gauges
-    //implementation("pl.pawelkleczkowski.customgauge:CustomGauge:1.0.4")
+    // implementation("pl.pawelkleczkowski.customgauge:CustomGauge:1.0.4")
 
     // Template
     implementation(libs.androidx.core.ktx)
@@ -89,4 +90,15 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+dependencies {
+    // Camera
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.video)
+
+    implementation(libs.androidx.camera.view)
+    implementation(libs.androidx.camera.extensions)
 }

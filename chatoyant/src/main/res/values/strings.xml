@@ -5,4 +5,6 @@
     <string name="title_exoplayer">ExoPlayer</string>
     <string name="title_dropbox">Dropbox</string>
     <string name="title_displays">Displays</string>
+    <string name="title_properties">Properties</string>
+    <string name="title_camera">Camera</string>
 </resources>
