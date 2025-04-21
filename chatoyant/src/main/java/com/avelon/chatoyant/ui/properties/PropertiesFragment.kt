@@ -1,7 +1,6 @@
 package com.avelon.chatoyant.ui.properties
 
 import android.car.Car
-import android.car.VehiclePropertyIds
 import android.car.hardware.CarPropertyValue
 import android.car.hardware.property.CarPropertyManager
 import android.os.Bundle
@@ -34,7 +33,7 @@ class PropertiesFragment :
 
         val car = Car.createCar(context)
         val propertyManager = car?.getCarManager(Car.PROPERTY_SERVICE) as CarPropertyManager
-        propertyManager.subscribePropertyEvents(VehiclePropertyIds.PERF_VEHICLE_SPEED, CarPropertyManager.SENSOR_RATE_ONCHANGE, this)
+        // propertyManager.subscribePropertyEvents(VehiclePropertyIds.PERF_VEHICLE_SPEED, CarPropertyManager.SENSOR_RATE_ONCHANGE, this)
 
         return root
     }

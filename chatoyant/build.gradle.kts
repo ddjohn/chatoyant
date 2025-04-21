@@ -70,6 +70,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.tooling.preview)
     debugImplementation(libs.androidx.ui.tooling)
+    implementation(libs.androidx.ui.viewbinding)
 
     // QR Code
     implementation("com.journeyapps:zxing-android-embedded:4.1.0")

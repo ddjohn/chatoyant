@@ -47,4 +47,10 @@
         android:label="@string/title_camera"
         tools:layout="@layout/fragment_camera" />
 
+    <fragment
+        android:id="@+id/navigation_compose"
+        android:name="com.avelon.chatoyant.ui.compose.ComposeFragment"
+        android:label="@string/title_compose"
+        tools:layout="@layout/fragment_compose" />
+
 </navigation>
