@@ -62,56 +62,9 @@ class ProjectionFragment : Fragment() {
         return root
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray,
-    ) {
-        DLog.d(TAG, "onRequestPermissionsResult(); $requestCode")
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    @OptIn(ExperimentalPermissionsApi::class)
-    @Composable
-    fun cameraPreviewScreen(modifier: Modifier = Modifier) {
-        val cameraPermissionState = rememberPermissionState(android.Manifest.permission.CAMERA)
-        if (cameraPermissionState.status.isGranted) {
-            CameraPreviewContent(modifier)
-        } else {
-            Column(
-                modifier = modifier.fillMaxSize().wrapContentSize().widthIn(max = 480.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                val textToShow =
-                    if (cameraPermissionState.status.shouldShowRationale) {
-                        // If the user has denied the permission but the rationale can be shown,
-                        // then gently explain why the app requires this permission
-                        "Whoops! Looks like we need your camera to work our magic!" +
-                            "Don't worry, we just wanna see your pretty face (and maybe some cats).  " +
-                            "Grant us permission and let's get this party started!"
-                    } else {
-                        // If it's the first time the user lands on this feature, or the user
-                        // doesn't want to be asked again for this permission, explain that the
-                        // permission is required
-                        "Hi there! We need your camera to work our magic! ✨\n" +
-                            "Grant us permission and let's get this party started! \uD83C\uDF89"
-                    }
-                Text(textToShow, textAlign = TextAlign.Center)
-                Spacer(Modifier.height(16.dp))
-                Button(onClick = { cameraPermissionState.launchPermissionRequest() }) {
-                    Text("Unleash the Camera!")
-                }
-            }
-        }
-    }
-
-    @Composable
-    private fun cameraPreviewContent(modifier: Modifier = Modifier) {
-        // TODO: Implement
     }
 }
