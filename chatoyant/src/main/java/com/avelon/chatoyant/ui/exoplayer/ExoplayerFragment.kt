@@ -44,13 +44,14 @@ class ExoplayerFragment : Fragment() {
                 }
 
                 private fun getCurrentPlayerPosition() {
-                    Log.d(TAG, "current pos: " + player.currentPosition)
+                    DLog.d(TAG, "current pos: ${player.currentPosition}")
                     if (player.isPlaying) {
                         playerView.postDelayed(this::getCurrentPlayerPosition, 100)
                     }
                 }
             },
         )
+
         player.addAnalyticsListener(
             object : AnalyticsListener {
             },

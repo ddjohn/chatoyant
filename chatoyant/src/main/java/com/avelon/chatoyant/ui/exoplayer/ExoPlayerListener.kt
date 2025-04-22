@@ -9,9 +9,9 @@ import androidx.media3.common.Tracks
 import androidx.media3.common.VideoSize
 import com.avelon.chatoyant.logging.DLog
 
-open class MapboxPlayerListener : Player.Listener {
+open class ExoPlayerListener : Player.Listener {
     companion object {
-        private val TAG = DLog.forTag(MapboxPlayerListener::class.java)
+        private val TAG = DLog.forTag(ExoPlayerListener::class.java)
     }
 
     override fun onEvents(
@@ -48,8 +48,6 @@ open class MapboxPlayerListener : Player.Listener {
                 else -> Log.i(TAG, "Unknown event $event")
             }
         }
-
-        // Log.e(TAG, "" + player.get
     }
 
     override fun onDeviceInfoChanged(deviceInfo: DeviceInfo) {
