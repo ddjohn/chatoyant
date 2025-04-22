@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.avelon.chatoyant.ui.exoplayer.ExoplayerFragment"
+        android:name="com.avelon.chatoyant.ui.exoplayer.ExoPlayerFragment"
         android:label="@string/title_exoplayer"
         tools:layout="@layout/fragment_exoplayer" />
 
@@ -52,5 +52,11 @@
         android:name="com.avelon.chatoyant.ui.compose.ComposeFragment"
         android:label="@string/title_compose"
         tools:layout="@layout/fragment_compose" />
+
+    <fragment
+        android:id="@+id/navigation_projection"
+        android:name="com.avelon.chatoyant.ui.projection.ProjectionFragment"
+        android:label="@string/title_projection"
+        tools:layout="@layout/fragment_projection" />
 
 </navigation>

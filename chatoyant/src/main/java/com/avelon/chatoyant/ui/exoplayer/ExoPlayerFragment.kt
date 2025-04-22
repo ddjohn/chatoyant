@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
@@ -14,9 +13,9 @@ import androidx.media3.exoplayer.analytics.AnalyticsListener
 import com.avelon.chatoyant.databinding.FragmentExoplayerBinding
 import com.avelon.chatoyant.logging.DLog
 
-class ExoplayerFragment : Fragment() {
+class ExoPlayerFragment : Fragment() {
     companion object {
-        private val TAG = DLog.forTag(ExoplayerFragment::class.java)
+        private val TAG = DLog.forTag(ExoPlayerFragment::class.java)
     }
 
     private var _binding: FragmentExoplayerBinding? = null
@@ -35,7 +34,7 @@ class ExoplayerFragment : Fragment() {
         // DAJO
         val player = ExoPlayer.Builder(requireContext()).build()
         player.addListener(
-            object : MapboxPlayerListener() {
+            object : ExoPlayerListener() {
                 override fun onIsPlayingChanged(isPlaying: Boolean) {
                     Log.e(TAG, "onIsPlayingChanged(): $isPlaying")
                     if (isPlaying) {

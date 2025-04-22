@@ -72,11 +72,21 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.ui.viewbinding)
 
+    // Camera
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.compose)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.accompanist.permissions)
+
     // QR Code
     implementation("com.journeyapps:zxing-android-embedded:4.1.0")
 
     // Gauges
     // implementation("pl.pawelkleczkowski.customgauge:CustomGauge:1.0.4")
+
+    // To be tested
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // Template
     implementation(libs.androidx.core.ktx)

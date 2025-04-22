@@ -17,6 +17,8 @@ media3Exoplayer = "1.5.1"
 navigationFragmentKtx = "2.8.8"
 navigationUiKtx = "2.8.8"
 uiAndroid = "1.7.8"
+camerax = "1.5.0-alpha03"
+accompanist = "0.36.0" # or whatever matches with your Compose version
 
 [libraries]
 android = { module = "com.mapbox.maps:android", version.ref = "mapbox" }
@@ -46,6 +48,9 @@ androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifec
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 androidx-ui-android = { group = "androidx.compose.ui", name = "ui-android", version.ref = "uiAndroid" }
+androidx-camera-compose = { module = "androidx.camera:camera-compose", version.ref = "camerax" }
+# The helper library to grant the camera permission
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
 
 
 [plugins]

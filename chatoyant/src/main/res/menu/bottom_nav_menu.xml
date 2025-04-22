@@ -17,6 +17,16 @@
         android:title="@string/title_exoplayer" />
 
     <item
+        android:id="@+id/navigation_camera"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="@string/title_camera" />
+
+    <item
+        android:id="@+id/navigation_projection"
+        android:icon="@android:drawable/ic_menu_set_as"
+        android:title="@string/title_projection" />
+
+    <item
         android:id="@+id/navigation_dropbox"
         android:icon="@android:drawable/ic_dialog_email"
         android:title="@string/title_dropbox" />
@@ -30,11 +40,6 @@
         android:id="@+id/navigation_properties"
         android:icon="@android:drawable/ic_dialog_info"
         android:title="@string/title_properties" />
-
-    <item
-        android:id="@+id/navigation_camera"
-        android:icon="@android:drawable/ic_menu_camera"
-        android:title="@string/title_camera" />
 
     <item
         android:id="@+id/navigation_compose"
