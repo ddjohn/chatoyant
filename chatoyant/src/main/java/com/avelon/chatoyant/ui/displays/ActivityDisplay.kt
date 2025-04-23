@@ -62,8 +62,9 @@ class ActivityDisplay(
                 height,
                 dpi,
                 surfaceHolder.surface,
-                DisplayManager.VIRTUAL_DISPLAY_FLAG_PUBLIC or
-                    VIRTUAL_DISPLAY_FLAG_SUPPORTS_TOUCH,
+                DisplayManager.VIRTUAL_DISPLAY_FLAG_PUBLIC
+                        //or
+                    //VIRTUAL_DISPLAY_FLAG_SUPPORTS_TOUCH,
             )
 
         val d = displayManager.getDisplay(22)
