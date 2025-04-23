@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.os.DropBoxManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -19,11 +18,13 @@ class MainActivity : AppCompatActivity() {
 
         private val REQUEST_PERMISSIONS =
             arrayOf(
+                "android.car.permission.READ_CAR_OCCUPANT_AWARENESS_STATE",
                 "android.permission.ACCESS_COARSE_LOCATION",
                 "android.permission.ACCESS_FINE_LOCATION",
+                "android.permission.CAMERA",
                 "android.permission.POST_NOTIFICATIONS",
             )
-        private val REQUEST_CODE = 666
+        private const val REQUEST_CODE = 666
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -49,13 +50,11 @@ class MainActivity : AppCompatActivity() {
             )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        navController.addOnDestinationChangedListener(
-            NavController.OnDestinationChangedListener { controller, destination, arguments ->
-                DLog.d(TAG, "onDestinationChanged(): ${destination.label}")
-                val dropboxManager = getSystemService(Context.DROPBOX_SERVICE) as DropBoxManager
-                dropboxManager.addText("fragment", "${destination.label}")
-            },
-        )
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            DLog.d(TAG, "onDestinationChanged(): ${destination.label}")
+            val dropboxManager = getSystemService(Context.DROPBOX_SERVICE) as DropBoxManager
+            dropboxManager.addText("fragment", "${destination.label}")
+        }
 
         // DAJO
         supportActionBar?.hide()
