@@ -68,5 +68,9 @@ class MainActivity : AppCompatActivity() {
     ) {
         DLog.d(TAG, "onRequestPermissionsResult(): $requestCode")
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        for (i in 0..permissions.size - 1) {
+            DLog.i(TAG, "permission=${permissions.get(i)}, grant=${grantResults.get(i)}")
+        }
     }
 }

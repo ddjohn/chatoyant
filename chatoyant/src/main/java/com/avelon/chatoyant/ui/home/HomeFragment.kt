@@ -34,11 +34,11 @@ class HomeFragment : Fragment() {
         val imageView = binding.imageView
         imageView.setImageBitmap(bitmap)
 
-        WebServer(4444).run()
-        WebServer(4445).run()
+        // WebServer(4444).run()
+        // WebServer(4445).run()
 
         thread {
-            WebClient("localhost", 4445).run()
+            // WebClient("localhost", 4445).run()
         }
 
         return root
