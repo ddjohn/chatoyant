@@ -9,19 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.platform.ViewCompositionStrategy
@@ -69,11 +67,11 @@ class MapboxFragment : Fragment() {
                 Box {
                     Column(
                         modifier =
-                            Modifier.zIndex(2f).padding(16.dp).background(Transparent).border(
-                                2.dp,
-                                Color.Blue,
-                                shape = RoundedCornerShape(16.dp),
-                            ),
+                            Modifier
+                                .fillMaxHeight()
+                                .zIndex(2f)
+                                .padding(16.dp)
+                                .background(Transparent),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
                     ) {

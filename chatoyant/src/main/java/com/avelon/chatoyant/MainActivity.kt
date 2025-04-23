@@ -6,7 +6,6 @@ import android.os.DropBoxManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.avelon.chatoyant.databinding.ActivityMainBinding
 import com.avelon.chatoyant.logging.DLog
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.navigation_notifications,
                 ),
             )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        // setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             DLog.d(TAG, "onDestinationChanged(): ${destination.label}")
@@ -57,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // DAJO
-        supportActionBar?.hide()
+        // supportActionBar?.hide()
 
         requestPermissions(REQUEST_PERMISSIONS, REQUEST_CODE)
     }
