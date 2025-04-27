@@ -1,15 +1,25 @@
 package com.avelon.chatoyant
 
+import android.app.ActivityManager
+import android.app.ActivityManager.RECENT_WITH_EXCLUDED
+import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.DropBoxManager
+import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.get
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.avelon.chatoyant.databinding.ActivityMainBinding
 import com.avelon.chatoyant.logging.DLog
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.io.ByteArrayOutputStream
+import java.math.BigInteger
+import java.security.MessageDigest
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -57,6 +67,73 @@ class MainActivity : AppCompatActivity() {
 
         // DAJO
         // supportActionBar?.hide()
+
+        val activityManager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
+/*
+        activityManager.addApplicationStartInfoCompletionListener(mainExecutor, {
+            DLog.e(TAG, "it=$it")
+        })
+*/
+        thread {
+            while (true) {
+                Thread.sleep(5000)
+                DLog.e(TAG, "----------------------------")
+                DLog.e(TAG, "apptasks:")
+                for (task in activityManager.appTasks) {
+                    DLog.e(TAG, "apptask=${task.taskInfo}")
+                }
+
+                DLog.e(TAG, "processes:")
+                for (process in activityManager.runningAppProcesses) {
+                    DLog.e(TAG, "process=${process.processName}")
+                }
+
+                DLog.e(TAG, "tasks2:")
+                for (task in activityManager.getRecentTasks(5, RECENT_WITH_EXCLUDED)) {
+                    DLog.e(TAG, "tasks2=$task")
+                }
+
+                val view = window.decorView.rootView
+                view.isDrawingCacheEnabled = true
+                val bitmap = Bitmap.createBitmap(view.getDrawingCache())
+                view.isDrawingCacheEnabled = false
+
+                DLog.e(TAG, "width=${bitmap.width}x${bitmap.height}")
+
+                val metrics = DisplayMetrics()
+                getWindowManager().getDefaultDisplay().getMetrics(metrics)
+                DLog.e(TAG, "metrics=$metrics")
+
+                val md = MessageDigest.getInstance("MD5")
+                val buffer = ByteArrayOutputStream()
+
+                for (x in 0..bitmap.width - 1) {
+                    for (y in 0..bitmap.height - 1) {
+                        buffer.write(bitmap[x, y])
+                    }
+                }
+                md.update(buffer.toByteArray())
+                val hash = md.digest()
+                val hash2 = BigInteger(1, hash).toString(16)
+                DLog.e(TAG, "hash=$hash2")
+            }
+        }
+
+        runOnUiThread(
+            Runnable {
+                Thread.sleep(10000)
+                val alertDialog = AlertDialog.Builder(this@MainActivity).create()
+                alertDialog.setTitle("Alert")
+                alertDialog.setMessage("Alert message to be shown")
+            /*alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });*/
+                alertDialog.show()
+            },
+        )
 
         requestPermissions(REQUEST_PERMISSIONS, REQUEST_CODE)
     }
