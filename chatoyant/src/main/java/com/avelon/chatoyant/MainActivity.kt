@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // DAJO
-        // supportActionBar?.hide()
+        supportActionBar?.hide()
 
         val activityManager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
 /*
