@@ -24,3 +24,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "chatoyant"
 include(":chatoyant")
+include(":chatoyant:mapbox")
+include(":chatoyant:cross-cutting")

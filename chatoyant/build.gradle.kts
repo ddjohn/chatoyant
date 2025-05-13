@@ -22,7 +22,7 @@ android {
 
     defaultConfig {
         applicationId = "com.avelon.chatoyant"
-        minSdk = 33
+        minSdk = 34
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -54,14 +54,15 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "../libs", "include" to listOf("*.jar"))))
 
+    implementation(project(":chatoyant:mapbox"))
+    implementation(project(":chatoyant:cross-cutting"))
+
     // Exo Player
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.exoplayer.dash)
     implementation(libs.androidx.media3.ui)
 
-    // Mapbox
-    implementation(libs.android)
-    implementation(libs.maps.compose)
+
 
     // Jetpack Compose
     val composeBom = platform("androidx.compose:compose-bom:2025.02.00")

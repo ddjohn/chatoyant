@@ -1,4 +1,4 @@
-package com.avelon.chatoyant.ui.mapbox
+package com.android.chatoyant
 
 import android.location.Location
 import android.location.LocationListener

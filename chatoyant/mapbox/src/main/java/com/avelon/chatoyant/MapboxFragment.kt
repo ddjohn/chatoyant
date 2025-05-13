@@ -1,4 +1,4 @@
-package com.avelon.chatoyant.ui.mapbox
+package com.android.chatoyant
 
 import android.Manifest
 import android.content.Context
@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.fragment.app.Fragment
-import com.avelon.chatoyant.databinding.FragmentMapboxBinding
+import com.android.chatoyant.databinding.FragmentBinding
 import com.avelon.chatoyant.logging.DLog
 import com.mapbox.geojson.Point
 import com.mapbox.maps.Style
@@ -47,7 +47,7 @@ class MapboxFragment : Fragment() {
         private val TAG = DLog.forTag(MapboxFragment::class.java)
     }
 
-    private var _binding: FragmentMapboxBinding? = null
+    private var _binding: FragmentBinding? = null
     val binding get() = _binding!!
 
     override fun onCreateView(
@@ -56,7 +56,7 @@ class MapboxFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         DLog.d(TAG, "onCreateView()")
-        _binding = FragmentMapboxBinding.inflate(inflater, container, false)
+        _binding = FragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         // DAJO

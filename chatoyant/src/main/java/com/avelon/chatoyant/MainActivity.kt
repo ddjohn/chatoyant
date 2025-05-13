@@ -5,12 +5,11 @@ import android.content.Context
 import android.os.Bundle
 import android.os.DropBoxManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.get
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.avelon.chatoyant.databinding.ActivityMainBinding
 import com.avelon.chatoyant.logging.DLog
+import com.avelon.chatoyant.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
