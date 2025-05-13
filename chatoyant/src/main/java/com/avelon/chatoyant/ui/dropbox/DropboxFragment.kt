@@ -1,6 +1,7 @@
 package com.avelon.chatoyant.ui.dropbox
 
 import android.content.Context
+import android.content.pm.PackageManager.PERMISSION_DENIED
 import android.os.Bundle
 import android.os.DropBoxManager
 import android.text.method.ScrollingMovementMethod
@@ -36,6 +37,11 @@ class DropboxFragment : Fragment() {
         // log?.setMaxLines(1);
         log?.setVerticalScrollBarEnabled(true)
         log?.setMovementMethod(ScrollingMovementMethod())
+
+        if (context?.checkSelfPermission(android.Manifest.permission.READ_DROPBOX_DATA) == PERMISSION_DENIED) {
+            DLog.w(TAG, "Not all needed permissions are approved")
+            return root
+        }
 
         // Thread(Runnable() {  ->
         thread {

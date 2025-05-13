@@ -3,6 +3,7 @@ package com.avelon.chatoyant.ui.properties
 import android.car.Car
 import android.car.hardware.CarPropertyValue
 import android.car.hardware.property.CarPropertyManager
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,11 @@ class PropertiesFragment :
 
         _binding = FragmentPropertiesBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        if (context?.packageManager?.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE) == false) {
+            DLog.w(TAG, "No automotive feature")
+            return root
+        }
 
         val car = Car.createCar(context)
         val propertyManager = car?.getCarManager(Car.PROPERTY_SERVICE) as CarPropertyManager

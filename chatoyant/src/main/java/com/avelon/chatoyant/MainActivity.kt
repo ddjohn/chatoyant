@@ -1,13 +1,9 @@
 package com.avelon.chatoyant
 
 import android.app.ActivityManager
-import android.app.ActivityManager.RECENT_WITH_EXCLUDED
-import android.app.AlertDialog
 import android.content.Context
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.DropBoxManager
-import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.get
 import androidx.navigation.findNavController
@@ -16,10 +12,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.avelon.chatoyant.databinding.ActivityMainBinding
 import com.avelon.chatoyant.logging.DLog
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.io.ByteArrayOutputStream
-import java.math.BigInteger
-import java.security.MessageDigest
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -73,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         activityManager.addApplicationStartInfoCompletionListener(mainExecutor, {
             DLog.e(TAG, "it=$it")
         })
-*/
+
         thread {
             while (true) {
                 Thread.sleep(5000)
@@ -134,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                 alertDialog.show()
             },
         )
-
+*/
         requestPermissions(REQUEST_PERMISSIONS, REQUEST_CODE)
     }
 

@@ -34,5 +34,12 @@ class DLog {
         ) {
             Log.e(tag, message, e)
         }
+
+        fun w(
+            tag: String,
+            message: String,
+        ) {
+            Log.w(tag, message)
+        }
     }
 }

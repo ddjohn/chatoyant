@@ -9,4 +9,5 @@
     <string name="title_displays">Displays</string>
     <string name="title_properties">Properties</string>
     <string name="title_compose">Compose</string>
+    <string name="title_packages">Packages</string>
 </resources>

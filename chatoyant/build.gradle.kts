@@ -104,7 +104,8 @@ dependencies {
 }
 
 dependencies {
-    // Camera
+    implementation(libs.navigation.ui.ktx)
+    implementation(libs.navigation.fragment.ktx) // Camera
     implementation(libs.androidx.camera.core)
     implementation(libs.androidx.camera.camera2)
     implementation(libs.androidx.camera.lifecycle)
@@ -112,4 +113,8 @@ dependencies {
 
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.extensions)
+}
+
+dependencies {
+    implementation("androidx.cardview:cardview:1.0.0")
 }

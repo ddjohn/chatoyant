@@ -60,4 +60,9 @@
         android:label="@string/title_projection"
         tools:layout="@layout/fragment_projection" />
 
+    <fragment
+        android:id="@+id/navigation_packages"
+        android:name="com.avelon.chatoyant.ui.packages.PackagesFragment"
+        android:label="@string/title_packages"
+        tools:layout="@layout/fragment_packages" />
 </navigation>

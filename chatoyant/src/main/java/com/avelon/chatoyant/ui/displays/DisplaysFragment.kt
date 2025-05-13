@@ -49,6 +49,11 @@ class DisplaysFragment : Fragment() {
             DLog.e(TAG, "intent=$intent")
         }
 
+        if (context?.packageManager?.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE) == false) {
+            DLog.w(TAG, "No autmotive feature")
+            return root
+        }
+
         val car = Car.createCar(context)
         val occupantZoneManager = car?.getCarManager(Car.CAR_OCCUPANT_ZONE_SERVICE) as CarOccupantZoneManager
         val zoneInfo = CarOccupantZoneManager.OccupantZoneInfo(1, OCCUPANT_TYPE_DRIVER, SEAT_ROW_1_LEFT)

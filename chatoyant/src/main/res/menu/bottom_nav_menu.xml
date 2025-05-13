@@ -45,4 +45,9 @@
         android:id="@+id/navigation_compose"
         android:icon="@android:drawable/ic_menu_edit"
         android:title="@string/title_compose" />
+
+    <item
+        android:id="@+id/navigation_packages"
+        android:icon="@android:drawable/checkbox_off_background"
+        android:title="@string/title_packages" />
 </menu>
