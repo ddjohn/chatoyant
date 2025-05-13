@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import com.avelon.chatoyant.crosscutting.DLog
 import com.avelon.chatoyant.databinding.FragmentProjectionBinding
-import com.avelon.chatoyant.logging.DLog
 
 class ProjectionFragment : Fragment() {
     companion object {

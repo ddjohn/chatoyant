@@ -24,5 +24,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "chatoyant"
 include(":chatoyant")
+include(":chatoyant:crosscutting")
 include(":chatoyant:mapbox")
-include(":chatoyant:cross-cutting")
+include(":chatoyant:exoplayer")
+include(":chatoyant:camera")

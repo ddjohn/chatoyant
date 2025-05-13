@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.compose.compiler)
 }
 
 android {
-    namespace = "com.avelon.chatoyant.mapbox"
+    namespace = "com.avelon.chatoyant.camera"
     compileSdk = 35
 
     defaultConfig {
@@ -33,22 +32,21 @@ android {
     }
     buildFeatures {
         viewBinding = true
-        compose = true
     }
 }
 
 dependencies {
-    val composeBom = platform("androidx.compose:compose-bom:2025.02.00")
-    implementation(composeBom)
-    androidTestImplementation(composeBom)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.ui.tooling.preview)
-    debugImplementation(libs.androidx.ui.tooling)
-    implementation(libs.androidx.ui.viewbinding)
-}
-dependencies {
-    implementation(libs.android)
-    implementation(libs.maps.compose)
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.compose)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.accompanist.permissions)
+
+    implementation(libs.androidx.camera.view)
+    implementation(libs.androidx.camera.extensions)
+
+    implementation(libs.navigation.ui.ktx)
+    implementation(libs.navigation.fragment.ktx) // Camera
 }
 dependencies {
     implementation(project(":chatoyant:crosscutting"))

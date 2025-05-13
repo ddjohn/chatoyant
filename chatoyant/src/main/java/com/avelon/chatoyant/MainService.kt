@@ -8,7 +8,7 @@ import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import androidx.annotation.RequiresPermission
-import com.avelon.chatoyant.logging.DLog
+import com.avelon.chatoyant.crosscutting.DLog
 import java.io.FileOutputStream
 import java.io.OutputStreamWriter
 

@@ -9,8 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.avelon.chatoyant.crosscutting.DLog
 import com.avelon.chatoyant.databinding.FragmentDropboxBinding
-import com.avelon.chatoyant.logging.DLog
 import kotlin.concurrent.thread
 
 class DropboxFragment : Fragment() {

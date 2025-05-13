@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import androidx.core.app.NotificationCompat
 import com.avelon.chatoyant.R
-import com.avelon.chatoyant.logging.DLog
+import com.avelon.chatoyant.crosscutting.DLog
 
 class Notif(
     val ctx: Context,

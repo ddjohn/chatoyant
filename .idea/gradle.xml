@@ -11,7 +11,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/chatoyant" />
-            <option value="$PROJECT_DIR$/chatoyant/cross-cutting" />
+            <option value="$PROJECT_DIR$/chatoyant/camera" />
+            <option value="$PROJECT_DIR$/chatoyant/crosscutting" />
+            <option value="$PROJECT_DIR$/chatoyant/exoplayer" />
             <option value="$PROJECT_DIR$/chatoyant/mapbox" />
           </set>
         </option>

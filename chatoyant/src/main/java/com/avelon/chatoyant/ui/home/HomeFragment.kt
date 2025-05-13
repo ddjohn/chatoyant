@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.avelon.chatoyant.crosscutting.DLog
 import com.avelon.chatoyant.databinding.FragmentHomeBinding
-import com.avelon.chatoyant.logging.DLog
 import com.google.zxing.BarcodeFormat
 import kotlin.concurrent.thread
 

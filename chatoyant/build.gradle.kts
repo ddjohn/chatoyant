@@ -54,15 +54,10 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "../libs", "include" to listOf("*.jar"))))
 
+    implementation(project(":chatoyant:camera"))
     implementation(project(":chatoyant:mapbox"))
-    implementation(project(":chatoyant:cross-cutting"))
-
-    // Exo Player
-    implementation(libs.androidx.media3.exoplayer)
-    implementation(libs.androidx.media3.exoplayer.dash)
-    implementation(libs.androidx.media3.ui)
-
-
+    implementation(project(":chatoyant:exoplayer"))
+    implementation(project(":chatoyant:crosscutting"))
 
     // Jetpack Compose
     val composeBom = platform("androidx.compose:compose-bom:2025.02.00")
@@ -72,13 +67,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.ui.viewbinding)
-
-    // Camera
-    implementation(libs.androidx.camera.core)
-    implementation(libs.androidx.camera.compose)
-    implementation(libs.androidx.camera.lifecycle)
-    implementation(libs.androidx.camera.camera2)
-    implementation(libs.accompanist.permissions)
 
     // QR Code
     implementation("com.journeyapps:zxing-android-embedded:4.1.0")
@@ -105,15 +93,6 @@ dependencies {
 }
 
 dependencies {
-    implementation(libs.navigation.ui.ktx)
-    implementation(libs.navigation.fragment.ktx) // Camera
-    implementation(libs.androidx.camera.core)
-    implementation(libs.androidx.camera.camera2)
-    implementation(libs.androidx.camera.lifecycle)
-    implementation(libs.androidx.camera.video)
-
-    implementation(libs.androidx.camera.view)
-    implementation(libs.androidx.camera.extensions)
 }
 
 dependencies {

@@ -12,8 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresPermission
 import androidx.fragment.app.Fragment
+import com.avelon.chatoyant.crosscutting.DLog
 import com.avelon.chatoyant.databinding.FragmentDisplaysBinding
-import com.avelon.chatoyant.logging.DLog
 
 class DisplaysFragment : Fragment() {
     companion object {

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.avelon.chatoyant.logging.DLog
+import com.avelon.chatoyant.crosscutting.DLog
 import com.avelon.chatoyant.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

@@ -31,8 +31,8 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import com.avelon.chatoyant.crosscutting.DLog
 import com.avelon.chatoyant.databinding.FragmentComposeBinding
-import com.avelon.chatoyant.logging.DLog
 
 class ComposeFragment : Fragment() {
     companion object {

@@ -7,7 +7,7 @@
     
     <fragment
         android:id="@+id/navigation_mapbox"
-        android:name="com.android.chatoyant.MapboxFragment"
+        android:name="com.avelon.chatoyant.mapbox.MapboxFragment"
         android:label="@string/title_mapbox"
         tools:layout="@layout/fragment_mapbox" />
 
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.avelon.chatoyant.ui.exoplayer.ExoPlayerFragment"
+        android:name="com.avelon.chatoyant.exoplayer.ExoPlayerFragment"
         android:label="@string/title_exoplayer"
         tools:layout="@layout/fragment_exoplayer" />
 
@@ -44,7 +44,7 @@
 
     <fragment
         android:id="@+id/navigation_camera"
-        android:name="com.avelon.chatoyant.ui.camera.CameraFragment"
+        android:name="com.avelon.chatoyant.camera.CameraFragment"
         android:label="@string/title_camera"
         tools:layout="@layout/fragment_camera" />
 

@@ -7,7 +7,7 @@ import android.hardware.display.DisplayManager
 import android.hardware.display.VirtualDisplay
 import android.util.Log
 import android.view.SurfaceHolder
-import com.avelon.chatoyant.logging.DLog
+import com.avelon.chatoyant.crosscutting.DLog
 
 class ActivityDisplay(
     val context: Context?,

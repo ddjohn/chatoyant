@@ -10,7 +10,7 @@ import android.media.projection.MediaProjectionManager
 import android.os.IBinder
 import android.os.Parcelable
 import com.avelon.chatoyant.R
-import com.avelon.chatoyant.logging.DLog
+import com.avelon.chatoyant.crosscutting.DLog
 
 class ProjectionService : Service() {
     companion object {

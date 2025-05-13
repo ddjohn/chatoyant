@@ -1,6 +1,6 @@
 package com.avelon.chatoyant.ui.home
 
-import com.avelon.chatoyant.logging.DLog
+import com.avelon.chatoyant.crosscutting.DLog
 import java.io.BufferedReader
 import java.io.BufferedWriter
 import java.io.InputStreamReader
