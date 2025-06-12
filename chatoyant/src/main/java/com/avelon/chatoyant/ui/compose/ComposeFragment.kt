@@ -56,11 +56,24 @@ class ComposeFragment : Fragment() {
         composeView.apply {
             // setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-                app()
+                //app()
+                DumbButton("hello") {
+                    throw Exception()
+                }
             }
         }
 
         return root
+    }
+
+    @Composable
+    fun DumbButton(
+        text: String,
+        onClick: () -> Unit,
+    ) {
+        Button(onClick = onClick) {
+            Text(text = text)
+        }
     }
 
     @Preview

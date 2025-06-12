@@ -44,9 +44,6 @@ dependencies {
 
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.extensions)
-
-    implementation(libs.navigation.ui.ktx)
-    implementation(libs.navigation.fragment.ktx) // Camera
 }
 dependencies {
     implementation(project(":chatoyant:crosscutting"))

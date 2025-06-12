@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--         android:sharedUserId="android.uid.system" -->
+    <!-- android:sharedUserId="android.uid.system" -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -17,7 +17,6 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
     <uses-permission
         android:name="android.permission.CAPTURE_VIDEO_OUTPUT"
         tools:ignore="ProtectedPermissions" />
@@ -30,7 +29,8 @@
     <uses-permission
         android:name="android.permission.READ_DROPBOX_DATA"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.REAL_GET_TASKS"
+    <uses-permission
+        android:name="android.permission.REAL_GET_TASKS"
         tools:ignore="ProtectedPermissions" />
 
     <application
@@ -43,23 +43,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Chatoyant">
         <service
+            android:name=".EarlyService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
             android:name=".MainService"
             android:enabled="true"
-            android:exported="true">
-        </service>
+            android:exported="true"></service>
         <service
             android:name=".ui.projection.ProjectionService"
             android:enabled="true"
             android:exported="true"
-            android:foregroundServiceType="mediaProjection">
-
-        </service>
+            android:foregroundServiceType="mediaProjection"></service>
 
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
