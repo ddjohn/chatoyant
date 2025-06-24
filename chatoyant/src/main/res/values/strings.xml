@@ -10,4 +10,5 @@
     <string name="title_properties">Properties</string>
     <string name="title_compose">Compose</string>
     <string name="title_packages">Packages</string>
+    <string name="title_settings">Settings</string>
 </resources>

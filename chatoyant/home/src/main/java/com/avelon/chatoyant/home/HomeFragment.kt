@@ -1,4 +1,4 @@
-package com.avelon.chatoyant.ui.home
+package com.avelon.chatoyant.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.avelon.chatoyant.crosscutting.DLog
-import com.avelon.chatoyant.databinding.FragmentHomeBinding
+import com.avelon.chatoyant.home.databinding.FragmentHomeBinding
 import com.google.zxing.BarcodeFormat
 import kotlin.concurrent.thread
 
@@ -23,6 +23,8 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+        DLog.d(TAG, "onCreateView()")
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -45,7 +47,9 @@ class HomeFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        DLog.d(TAG, "onDestroyView()")
         super.onDestroyView()
+
         _binding = null
     }
 }

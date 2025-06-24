@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_mapbox"
-        android:icon="@android:drawable/ic_dialog_map"
-        android:title="@string/title_mapbox" />
-
-    <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
+
+    <!--item
+        android:id="@+id/navigation_mapbox"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="@string/title_mapbox" />
 
     <item
         android:id="@+id/navigation_notifications"
@@ -49,5 +49,10 @@
     <item
         android:id="@+id/navigation_packages"
         android:icon="@android:drawable/checkbox_off_background"
-        android:title="@string/title_packages" />
+        android:title="@string/title_packages" /-->
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/media3_icon_settings"
+        android:title="@string/title_settings" />
 </menu>

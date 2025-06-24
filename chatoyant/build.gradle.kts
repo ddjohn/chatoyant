@@ -54,10 +54,15 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "../libs", "include" to listOf("*.jar"))))
 
+    implementation(project(":chatoyant:home"))
     implementation(project(":chatoyant:camera"))
-    implementation(project(":chatoyant:mapbox"))
     implementation(project(":chatoyant:exoplayer"))
+    implementation(project(":chatoyant:mapbox"))
     implementation(project(":chatoyant:crosscutting"))
+
+    // Media
+    implementation(libs.androidx.media)
+    implementation(libs.androidx.media3.session)
 
     // Jetpack Compose
     val composeBom = platform("androidx.compose:compose-bom:2025.02.00")
@@ -67,9 +72,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.ui.viewbinding)
-
-    // QR Code
-    implementation("com.journeyapps:zxing-android-embedded:4.1.0")
 
     // Gauges
     // implementation("pl.pawelkleczkowski.customgauge:CustomGauge:1.0.4")
