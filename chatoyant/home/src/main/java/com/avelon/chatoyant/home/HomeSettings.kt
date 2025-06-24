@@ -20,9 +20,9 @@ class HomeSettings : AppCompatActivity() {
         binding = SettingsHomeBinding.inflate(layoutInflater)
 
         enableEdgeToEdge()
-        setContentView(binding?.root)
+        setContentView(binding!!.root)
 
-        binding?.save?.setOnClickListener {
+        binding!!.save.setOnClickListener {
             setResult(RESULT_OK)
             finish()
         }

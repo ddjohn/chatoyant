@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- android:sharedUserId="android.uid.system" -->
+
+    <queries>
+        <!--package android:name="com.avelon.chatoyant" /-->
+        <intent>
+            <action android:name="com.avelon.intent.action.SETTING" />
+        </intent>
+    </queries>
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
+
+
 
     <uses-permission android:name="android.car.permission.READ_CAR_OCCUPANT_AWARENESS_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -42,26 +51,36 @@
         android:roundIcon="@mipmap/dajo_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Chatoyant">
+
+
+
+        <service
+            android:name=".MainMediaSessionService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".MainMediaBrowserService"
+            android:enabled="true"
+            android:exported="true" />
         <service
             android:name=".EarlyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
         <service
             android:name=".MainService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
         <service
             android:name=".ui.projection.ProjectionService"
             android:enabled="true"
             android:exported="true"
-            android:foregroundServiceType="mediaProjection"></service>
+            android:foregroundServiceType="mediaProjection" />
 
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />

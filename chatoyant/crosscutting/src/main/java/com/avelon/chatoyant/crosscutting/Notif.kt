@@ -1,12 +1,9 @@
-package com.avelon.chatoyant.notifications
+package com.avelon.chatoyant.crosscutting
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.content.Context.NOTIFICATION_SERVICE
 import androidx.core.app.NotificationCompat
-import com.avelon.chatoyant.R
-import com.avelon.chatoyant.crosscutting.DLog
 
 class Notif(
     val ctx: Context,
@@ -26,7 +23,7 @@ class Notif(
     }
 
     init {
-        val notificationManager = ctx.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannels(channels)
     }
 
@@ -35,12 +32,12 @@ class Notif(
         title: String,
         content: String,
     ) {
-        val notificationManager = ctx.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         var builder =
             NotificationCompat
                 .Builder(ctx, "D")
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setSmallIcon(com.google.android.material.R.drawable.abc_ic_star_black_16dp)
                 .setContentTitle(title)
                 .setContentText(content)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)

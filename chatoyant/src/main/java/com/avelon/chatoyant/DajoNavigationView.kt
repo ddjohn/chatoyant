@@ -18,5 +18,5 @@ class DajoNavigationView : BottomNavigationView {
         defStyleRes,
     )
 
-    override fun getMaxItemCount(): Int = 10
+    override fun getMaxItemCount(): Int = 15
 }

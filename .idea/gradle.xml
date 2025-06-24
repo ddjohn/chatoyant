@@ -16,6 +16,8 @@
             <option value="$PROJECT_DIR$/chatoyant/exoplayer" />
             <option value="$PROJECT_DIR$/chatoyant/home" />
             <option value="$PROJECT_DIR$/chatoyant/mapbox" />
+            <option value="$PROJECT_DIR$/chatoyant/packages" />
+            <option value="$PROJECT_DIR$/chatoyant/settings" />
           </set>
         </option>
       </GradleProjectSettings>

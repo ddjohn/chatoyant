@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity
+            android:name=".Settings2Activity"
+            android:exported="false">
+            <meta-data
+                android:name="com.avelon.meta.setting.name"
+                android:value="Some text" />
+            <intent-filter>
+                <action android:name="com.avelon.intent.action.SETTING" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".Settings1Activity"
+            android:exported="false">
+            <meta-data
+                android:name="com.avelon.meta.setting.name"
+                android:value="Some text" />
+            <intent-filter>
+                <action android:name="com.avelon.intent.action.SETTING" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

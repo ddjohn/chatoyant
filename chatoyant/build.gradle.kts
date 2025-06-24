@@ -55,6 +55,9 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "../libs", "include" to listOf("*.jar"))))
 
     implementation(project(":chatoyant:home"))
+    implementation(project(":chatoyant:packages"))
+    implementation(project(":chatoyant:settings"))
+
     implementation(project(":chatoyant:camera"))
     implementation(project(":chatoyant:exoplayer"))
     implementation(project(":chatoyant:mapbox"))
@@ -98,5 +101,6 @@ dependencies {
 }
 
 dependencies {
+    implementation(libs.androidx.activity)
     implementation("androidx.cardview:cardview:1.0.0")
 }

@@ -1,17 +1,20 @@
 package com.avelon.chatoyant.exoplayer
 
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.analytics.AnalyticsListener
 import com.avelon.chatoyant.crosscutting.DLog
 import com.avelon.chatoyant.exoplayer.databinding.FragmentExoplayerBinding
+
+private const val DEFAULT_MOVIE =
+    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
 
 class ExoPlayerFragment : Fragment() {
     companion object {
@@ -58,7 +61,8 @@ class ExoPlayerFragment : Fragment() {
 
         playerView.player = player
 
-        val videoUri = Uri.parse("https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4")
+        val videoUri =
+            DEFAULT_MOVIE.toUri()
         val mediaItem = MediaItem.fromUri(videoUri)
         player.setMediaItem(mediaItem)
         player.prepare()

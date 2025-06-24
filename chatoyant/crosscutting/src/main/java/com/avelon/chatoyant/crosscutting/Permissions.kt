@@ -1,7 +1,6 @@
-package com.avelon.chatoyant.permissions
+package com.avelon.chatoyant.crosscutting
 
 import android.app.Activity
-import com.avelon.chatoyant.crosscutting.DLog
 
 class Permissions(
     val ctx: Activity,
