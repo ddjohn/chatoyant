@@ -36,14 +36,21 @@ class PackagesFragment :
         val packageManager = context?.packageManager
         val packages = packageManager!!.getInstalledPackages(PackageManager.MATCH_ALL)
         for (pkg in packages) {
-            DLog.i(TAG, "package=$pkg")
+            DLog.i(TAG, "package=${pkg.packageName}")
+            DLog.i(TAG, "package=${pkg.packageName}")
+            DLog.i(TAG, "package=${pkg.applicationInfo?.packageName}")
             DLog.i(TAG, "info=${pkg.applicationInfo}")
+            DLog.i(TAG, "info=${pkg.applicationInfo?.name}")
+            DLog.i(TAG, "info=${pkg.applicationInfo?.metaData}")
+
+            val appInfo = pkg.applicationInfo
+            val appName = packageManager.getApplicationLabel(appInfo!!)
 
             itemArray.add(
                 PackageItemData(
                     pkg.packageName,
                     pkg.applicationInfo?.loadIcon(context?.packageManager),
-                    "",
+                    appName.toString(),
                 ),
             )
         }
@@ -71,12 +78,11 @@ class PackagesFragment :
         DLog.i(TAG, "onItemClick(): $position $id")
         val itemData = parent?.getItemAtPosition(position) as PackageItemData
 
-//        val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         val intent = Intent(Intent.ACTION_MAIN)
         intent.addCategory(Intent.CATEGORY_LAUNCHER)
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
         intent.setPackage(itemData.pkg)
-//        intent.setPackage(itemData.pkg)
-        context?.startActivity(intent)
+        //context?.startActivity(intent)
+        context?.startActivity(context?.packageManager?.getLaunchIntentForPackage(itemData.pkg))
     }
 }

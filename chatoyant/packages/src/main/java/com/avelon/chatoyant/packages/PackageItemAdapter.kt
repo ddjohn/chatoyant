@@ -16,8 +16,7 @@ class PackageItemAdapter(
         val TAG = DLog.forTag(PackageItemAdapter::class.java)
     }
 
-    private var _binding: ItemBinding? = null
-    val binding get() = _binding!!
+    private var binding: ItemBinding? = null
 
     val inflater: LayoutInflater = ctx!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
@@ -43,12 +42,12 @@ class PackageItemAdapter(
     ): View? {
         DLog.d(TAG, "getView(): $position")
 
-        _binding = ItemBinding.inflate(inflater)
+        binding = ItemBinding.inflate(inflater)
 
-        binding.pkg.text = data[position].pkg
-        binding.drawable.setImageDrawable(data[position].icon)
+        binding!!.pkg.text = data[position].text
+        binding!!.drawable.setImageDrawable(data[position].icon)
         //   binding.text.text = data[position].text
 
-        return binding.root
+        return binding!!.root
     }
 }
