@@ -82,7 +82,7 @@ class PackagesFragment :
         intent.addCategory(Intent.CATEGORY_LAUNCHER)
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
         intent.setPackage(itemData.pkg)
-        //context?.startActivity(intent)
+        // context?.startActivity(intent)
         context?.startActivity(context?.packageManager?.getLaunchIntentForPackage(itemData.pkg))
     }
 }
