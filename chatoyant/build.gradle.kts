@@ -101,6 +101,12 @@ dependencies {
 }
 
 dependencies {
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
     implementation(libs.androidx.activity)
     implementation("androidx.cardview:cardview:1.0.0")
+    debugImplementation(libs.androidx.ui.test.manifest)
 }

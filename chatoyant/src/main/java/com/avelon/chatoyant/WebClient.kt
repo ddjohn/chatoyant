@@ -1,4 +1,4 @@
-package com.avelon.chatoyant.ui.home
+package com.avelon.chatoyant
 
 import com.avelon.chatoyant.crosscutting.DLog
 import java.io.BufferedReader

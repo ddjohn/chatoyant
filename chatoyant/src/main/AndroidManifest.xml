@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <!-- android:sharedUserId="android.uid.system" -->
-
     <queries>
-        <!--package android:name="com.avelon.chatoyant" /-->
+
+        <!-- package android:name="com.avelon.chatoyant" / -->
         <intent>
             <action android:name="com.avelon.intent.action.SETTING" />
         </intent>
@@ -13,8 +13,6 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-
-
 
     <uses-permission android:name="android.car.permission.READ_CAR_OCCUPANT_AWARENESS_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -51,8 +49,11 @@
         android:roundIcon="@mipmap/dajo_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Chatoyant">
-
-
+        <activity
+            android:name=".ComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_compose"
+            android:theme="@style/Theme.Chatoyant" />
 
         <service
             android:name=".MainMediaSessionService"
